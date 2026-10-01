@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1.0">
     <title>Farhan Premium Electronics Mall</title>
     <!-- Font Awesome Icon Library -->
     <link rel="stylesheet" href="https://cloudflare.com">
@@ -31,85 +27,5 @@
         #cart-status { background: #0b0f19; padding: 15px; border-radius: 8px; border-left: 4px solid var(--accent); font-size: 16px; margin-bottom: 20px; }
         .total-row { font-size: 24px; font-weight: bold; margin: 20px 0; color: #fff; text-align: right; }
         .total-row span { color: var(--accent); }
-        input, textarea { width: 100%; padding: 14px; margin-bottom: 16px; background: #0b0f19; color: white; border: 1px solid #24344d; border-radius: 8px; box-sizing: border-box; font-size: 15px; transition: border 0.2s; }
-        input:focus, textarea:focus { border-color: var(--accent); outline: none; }
-        .captcha-box { background: #1e1b4b; padding: 18px; border-radius: 8px; border: 1px solid #312e81; font-weight: bold; color: #818cf8; margin-bottom: 20px; font-size: 18px; letter-spacing: 0.5px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); }
-        .submit-btn { background: linear-gradient(135deg, var(--success), #16a34a); color: white; font-size: 18px; padding: 16px; width: 100%; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 12px; box-shadow: 0 4px 15px rgba(34,197,94,0.3); transition: transform 0.2s; }
-        .submit-btn:hover { transform: scale(1.01); }
-        .fa-whatsapp { font-size: 26px; }
-    </style>
-</head>
-<body>
-    <header>✨ Farhan Premium Electronics Mall ✨</header>
-    <div class="container">
-        <div class="grid" id="product-grid"></div>
-        <div class="cart-box">
-            <h2>🛒 Shopping Cart & Order Summary</h2>
-            <div id="cart-status">Basket khali hai. Koi product select karein.</div>
-            <div class="total-row">Total Billing Amount: Rs. <span id="total-bill">0</span></div>
-            <h2>📋 Premium Verified Checkout Form</h2>
-            <form id="order-form">
-                <input type="text" id="cust-name" required placeholder="Aap ka Full Naam...">
-                <input type="tel" id="cust-phone" required placeholder="WhatsApp Number (e.g. 03121545628)...">
-                <textarea id="cust-address" rows="3" required placeholder="Complete Delivery Address..."></textarea>
-                <div class="captcha-box"><i class="fa fa-shield"></i> <span id="captcha-q"></span></div>
-                <input type="number" id="captcha-a" required placeholder="Type the correct math answer here...">
-                <button type="submit" class="submit-btn"><i class="fa fa-whatsapp"></i> Confirm Order on WhatsApp 🚀</button>
-            </form>
-        </div>
-    </div>
-    <script>
-        const gadgets = ["iPhone 15 Pro Max", "Samsung Galaxy S24 Ultra", "MacBook Pro M3", "Sony WH-1000XM5", "PlayStation 5 Slim", "Apple Watch Series 9", "iPad Air M2", "Nintendo Switch OLED", "DJI Mini 4 Pro", "AirPods Pro 2"];
-        let gridHtml = "";
-        for(let i=1; i<=100; i++) {
-            let name = gadgets[(i-1)%gadgets.length] + " (Edition #" + i + ")";
-            let price = 25000 + (i * 1250);
-            gridHtml += `<div class="card">
-                <div class="img-placeholder"><i class="fa fa-laptop"></i></div>
-                <h3>${name}</h3>
-                <div class="price">Rs. ${price.toLocaleString()}</div>
-                <button onclick="addToCart('${name}', ${price})">Add to Cart</button>
-            </div>`;
-        }
-        document.getElementById('product-grid').innerHTML = gridHtml;
-
-        let selectedItem = null;
-        let n1 = Math.floor(Math.random() * 8) + 2;
-        let n2 = Math.floor(Math.random() * 7) + 2;
-        let ans = n1 + n2;
-        document.getElementById('captcha-q').innerText = "Anti-Bot Check: " + n1 + " + " + n2 + " = ?";
-
-        function addToCart(name, price) {
-            selectedItem = { name: name, price: price };
-            document.getElementById('cart-status').innerHTML = "<strong>Selected Product:</strong> " + name + " <span style='color:#22c55e;'>(Ready for Checkout)</span>";
-            document.getElementById('total-bill').innerText = price.toLocaleString();
-            alert("🛒 " + name + " Basket mein successfully add ho gaya!");
-        }
-
-        document.getElementById('order-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            if(!selectedItem) {
-                alert("Pehle Product Basket mein Add karein!");
-                return;
-            }
-            if(parseInt(document.getElementById('captcha-a').value) !== ans) {
-                alert("❌ Wrong Math Answer!");
-                return;
-            }
-            
-            let name = document.getElementById('cust-name').value;
-            let phone = document.getElementById('cust-phone').value;
-            let addr = document.getElementById('cust-address').value;
-            
-            let text = '*🔥 NEW PREMIUM GADGET ORDER!*%0A%0A' +
-                       '*Customer Name:* ' + encodeURIComponent(name) + '%0A' +
-                       '*WhatsApp Number:* ' + encodeURIComponent(phone) + '%0A' +
-                       '*Delivery Address:* ' + encodeURIComponent(addr) + '%0A' +
-                       '*Selected Product:* ' + encodeURIComponent(selectedItem.name) + '%0A' +
-                       '*Total Invoice Bill:* Rs. ' + selectedItem.price.toLocaleString();
-                       
-            window.location.href = 'https://wa.me' + text;
-        });
-    </script>
-</body>
-</html>
+        input, textarea { width: 100%; padding: 14px; marborder-cologin-bottom: 16px; background: #0b0f19; color: white; border: 1px solid #24344d; border-radius: 8px; box-sizing: border-box; font-size: 15px; transition: border 0.2s; }
+        input:focus, textarea:focus { 
