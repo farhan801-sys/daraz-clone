@@ -3,83 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Electronics Mega Mall</title>
+    <title>Farhan Premium Electronics Mall</title>
+    <!-- Official Font Awesome Icon Library Included -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #0f172a; color: #f8fafc; }
-        header { background: linear-gradient(135deg, #1e293b, #0f172a); color: #38bdf8; padding: 25px; text-align: center; font-size: 28px; font-weight: bold; border-bottom: 3px solid #38bdf8; text-transform: uppercase; letter-spacing: 2px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .container { max-width: 1400px; margin: 20px auto; padding: 0 20px; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 30px; }
-        .product-card { background: #1e293b; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #334155; transition: transform 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(56,189,248,0.2); border-color: #38bdf8; }
-        .product-card img { width: 100%; height: 220px; object-fit: contain; border-radius: 10px; background: #0f172a; padding: 10px; box-sizing: border-box; }
-        .product-card h3 { margin: 15px 0 10px 0; font-size: 19px; color: #f1f5f9; height: 50px; overflow: hidden; }
-        .product-card .price { color: #38bdf8; font-weight: bold; font-size: 22px; margin: 10px 0; }
-        .add-to-cart-btn { background: linear-gradient(135deg, #38bdf8, #0ea5e9); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; text-transform: uppercase; font-size: 14px; }
-        .cart-section { background: #1e293b; padding: 30px; border-radius: 15px; margin-top: 50px; border: 1px solid #334155; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #334155; color: #cbd5e1; }
-        .total-price { text-align: right; font-size: 24px; font-weight: bold; color: #38bdf8; margin: 25px 0; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: #94a3b8; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #334155; background: #0f172a; color: white; border-radius: 8px; box-sizing: border-box; }
-        .captcha-box { background: #1e1b4b; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #312e81; font-weight: bold; color: #818cf8; }
-        .confirm-btn { background: linear-gradient(135deg, #0ea5e9, #2563eb); color: white; border: none; padding: 16px; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; width: 100%; text-transform: uppercase; box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #0f172a; color: #fff; }
+        header { background: #1e293b; color: #38bdf8; padding: 20px; text-align: center; font-size: 24px; font-weight: bold; border-bottom: 3px solid #38bdf8; text-transform: uppercase; }
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .card { background: #1e293b; padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #334155; }
+        .price { color: #38bdf8; font-size: 22px; font-weight: bold; margin: 10px 0; }
+        button { background: linear-gradient(135deg, #38bdf8, #0ea5e9); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-weight: bold; width: 100%; text-transform: uppercase; }
+        .cart-box { background: #1e293b; padding: 25px; border-radius: 10px; margin-top: 40px; border: 1px solid #334155; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 12px; background: #0f172a; color: white; border: 1px solid #334155; border-radius: 6px; box-sizing: border-box; }
+        .captcha-box { background: #1e1b4b; padding: 15px; border-radius: 6px; border: 1px solid #312e81; font-weight: bold; color: #818cf8; margin-bottom: 12px; font-size: 18px; }
+        .submit-btn { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; font-size: 18px; padding: 15px; width: 100%; border-radius: 6px; border: none; font-weight: bold; cursor: pointer; text-transform: uppercase; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .fa-whatsapp { font-size: 24px; color: #fff; }
     </style>
 </head>
 <body>
     <header>✨ Farhan Premium Electronics Mall ✨</header>
     <div class="container">
-        <div class="product-grid" id="grid"></div>
-        <div class="cart-section">
+        <div class="grid" id="product-grid"></div>
+        <div class="cart-box">
             <h2>🛒 Shopping Cart & Order Summary</h2>
-            <div id="cart-items-container"><p style="color:#94a3b8;">Basket khali hai. Koi product select karein.</p></div>
-            <div class="total-price">Total Billing Amount: Rs. <span id="total-amount">0</span></div>
+            <p id="cart-status" style="color:#cbd5e1; font-size: 18px; font-weight: bold;">Basket khali hai. Koi product select karein.</p>
+            <div class="price">Total Billing Amount: Rs. <span id="total-bill">0</span></div>
             <h3>📋 Premium Verified Checkout Form</h3>
-            <form id="checkout-form">
-                <div class="form-group"><label>Aap ka Naam:</label><input type="text" id="cust-name" required placeholder="Enter name..."></div>
-                <div class="form-group"><label>WhatsApp Number:</label><input type="tel" id="cust-phone" required placeholder="Enter number..."></div>
-                <div class="form-group"><label>Shipping Address:</label><textarea id="cust-address" rows="3" required placeholder="Enter address..."></textarea></div>
-                <div class="captcha-box"><label id="captcha-question" style="display:block; margin-bottom:8px;"></label><input type="number" id="captcha-answer" required placeholder="Type math answer..." style="width:100%; padding:10px; border:1px solid #334155; background:#0f172a; color:white; border-radius:6px;"></div>
-                <button type="submit" class="confirm-btn">Confirm Order 🚀</button>
+            <form id="order-form">
+                <input type="text" id="cust-name" required placeholder="Aap ka Full Naam...">
+                <input type="tel" id="cust-phone" required placeholder="WhatsApp Number (e.g. 03121545628)...">
+                <textarea id="cust-address" rows="3" required placeholder="Complete Delivery Address..."></textarea>
+                <div class="captcha-box"><span id="captcha-q"></span></div>
+                <input type="number" id="captcha-a" required placeholder="Type the correct math answer here...">
+                <button type="submit" class="submit-btn"><i class="fa fa-whatsapp"></i> Confirm Order on WhatsApp 🚀</button>
             </form>
         </div>
     </div>
     <script>
-        const names = ["iPhone 15 Pro Max", "Samsung S24 Ultra", "MacBook Pro M3", "Sony WH-1000XM5", "PlayStation 5 Slim", "Apple Watch Series 9", "iPad Air M2", "Nintendo Switch OLED", "DJI Mini 4 Pro", "AirPods Pro 2", "GoPro HERO12", "Samsung Galaxy Watch 6", "Asus ROG Ally", "Logitech G Pro", "Razer BlackWidow", "Anker PowerBank", "Kindle Paperwhite", "Sony WF-1000XM5", "Bose QC Ultra", "Seagate 2TB HDD"];
+        const gadgets = ["iPhone 15 Pro Max", "Samsung Galaxy S24 Ultra", "MacBook Pro M3", "Sony WH-1000XM5", "PlayStation 5 Slim", "Apple Watch Series 9", "iPad Air M2", "Nintendo Switch OLED", "DJI Mini 4 Pro", "AirPods Pro 2"];
         let gridHtml = "";
         for(let i=1; i<=100; i++) {
-            let name = (names[(i-1)%names.length]) + " (Edition #" + i + ")";
-            let price = 15000 + (i * 950);
-            gridHtml += `<div class="product-card" data-name="${name}" data-price="${price}"><img src="https://hmnstudio.com" alt="Gadget"><h3>${name}</h3><p class="price">Rs. ${price.toLocaleString()}</p><button class="add-to-cart-btn">Add to Cart</button></div>`;
+            let name = gadgets[(i-1)%gadgets.length] + " (Edition #" + i + ")";
+            let price = 25000 + (i * 1250);
+            gridHtml += `<div class="card"><h3>${name}</h3><div class="price">Rs. ${price.toLocaleString()}</div><button onclick="addToCart('${name}', ${price})">Add to Cart</button></div>`;
         }
-        document.getElementById('grid').innerHTML = gridHtml;
+        document.getElementById('product-grid').innerHTML = gridHtml;
 
-        let cart = [];
-        let num1 = Math.floor(Math.random() * 8) + 2;
-        let num2 = Math.floor(Math.random() * 7) + 2;
-        let correctAnswer = num1 + num2;
-        document.getElementById('captcha-question').innerText = "🤖 Anti-Bot Security Check: " + num1 + " + " + num2 + " = ?";
+        let selectedItem = null;
+        let n1 = Math.floor(Math.random() * 8) + 2;
+        let n2 = Math.floor(Math.random() * 7) + 2;
+        let ans = n1 + n2;
+        document.getElementById('captcha-q').innerText = "🤖 Anti-Bot Check: " + n1 + " + " + n2 + " = ?";
 
-        document.body.addEventListener('click', function(e) {
-            if (e.target && e.target.classList.contains('add-to-cart-btn')) {
-                const card = e.target.closest('.product-card');
-                const name = card.getAttribute('data-name');
-                const price = parseInt(card.getAttribute('data-price'));
-                cart = [{ name, price }];
-                document.getElementById('cart-items-container').innerHTML = '<div class="cart-item"><span>'+name+'</span><strong>Rs. '+price.toLocaleString()+'</strong></div>';
-                document.getElementById('total-amount').innerText = price.toLocaleString();
-                alert("🛒 " + name + " Basket mein add ho gaya!");
-            }
-        });
+        function addToCart(name, price) {
+            selectedItem = { name: name, price: price };
+            document.getElementById('cart-status').innerText = "Selected Product: " + name;
+            document.getElementById('total-bill').innerText = price.toLocaleString();
+            alert("🛒 " + name + " Basket mein successfully add ho gaya!");
+        }
 
-        document.getElementById('checkout-form').addEventListener('submit', function(e) {
+        document.getElementById('order-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            if (cart.length === 0) return alert("Pehle item add karein!");
-            if (parseInt(document.getElementById('captcha-answer').value) !== correctAnswer) return alert("❌ Wrong Security Answer!");
+            if(!selectedItem) {
+                alert("Pehle Product Basket mein Add karein!");
+                return;
+            }
+            if(parseInt(document.getElementById('captcha-a').value) !== ans) {
+                alert("❌ Wrong Math Answer!");
+                return;
+            }
             
             let name = document.getElementById('cust-name').value;
             let phone = document.getElementById('cust-phone').value;
             let addr = document.getElementById('cust-address').value;
-            let text = '*🔥 NEW PREMIUM GADGET ORDER!*%0A%0A*Name:* ' + encodeURIComponent(name) + '%0A*WhatsApp:* ' + encodeURIComponent(phone) + '%0A*Address:* ' + encodeURIComponent(addr) + '%0A*Product:* ' + encodeURIComponent(cart[0].name) + '%0A*Total Bill:* Rs. ' + document.getElementById('total-amount').innerText;
+            
+            let text = '*🔥 NEW PREMIUM GADGET ORDER!*%0A%0A' +
+                       '*Customer Name:* ' + encodeURIComponent(name) + '%0A' +
+                       '*WhatsApp Number:* ' + encodeURIComponent(phone) + '%0A' +
+                       '*Delivery Address:* ' + encodeURIComponent(addr) + '%0A' +
+                       '*Selected Product:* ' + encodeURIComponent(selectedItem.name) + '%0A' +
+                       '*Total Invoice Bill:* Rs. ' + selectedItem.price.toLocaleString();
+                       
             window.location.href = 'https://wa.me' + text;
         });
     </script>
